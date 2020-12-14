@@ -48,6 +48,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
   bool showMatches = false;
   bool inPlay = false;
   //int numOfMatches;
+  String testString = "Testing";
 
 
   @override
@@ -225,13 +226,19 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                ),
                                Spacer(),
                                    status[index] == 'in progress' ?
-                                   Text(homeScores[index] + '-' + awayScores[index],
-                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)) :
-                                   Text(' VS ',
-                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
+                                   Container(
+                                     color: Colors.blue[600],
+                                     child: Text(/*homeScores[index]*/ testString + '-' + testString/*awayScores[index]*/,
+                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
+                                   ) :
+                                   Container(
+                                     color: Colors.red[600],
+                                     child: Text(' VS ',
+                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
+                                     ),
                                    ),
                                Spacer(),
-                               Text(awayTeams[index],
+                               Text(testString/*awayTeams[index]*/,
                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)
                                ),
                              ],
@@ -240,13 +247,13 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                            Row(
                              children: <Widget>[
                                status[index] == 'in progress' ?
-                               Text(times[index],
+                               Text(/*times[index]*/testString,
                                  style: TextStyle(fontSize: 10.0)) : Text(''),
                              ],
                            ),
                            Row(
                              children: <Widget>[
-                               Text('Status: ' + status[index],
+                               Text('Status: ' + /*status[index]*/testString,
                                style: TextStyle(color: Colors.red),
                                ),
                              ],
@@ -254,14 +261,14 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                            SizedBox(height: 10.0),
                            Row(
                              children: <Widget>[
-                               Text('Venue: ' + venueNames[index],
+                               Text('Venue: ' + /*venueNames[index]*/,
                                  style: TextStyle(color: Colors.blue),
                                ),
                              ],
                            ),
                            Row(
                              children: <Widget>[
-                               Text(leagueNames[index],
+                               Text(/*leagueNames[index]*/testString,
                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                                ),
                              ],
