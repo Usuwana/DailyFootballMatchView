@@ -8,6 +8,11 @@ class Fixture extends StatefulWidget {
 class _FixtureState extends State<Fixture> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child:
+        Container(
+          child: Row(),
+        ),
+    );
   }
 }
