@@ -49,13 +49,15 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
   bool inPlay = false;
   //int numOfMatches;
   String testString = "Testing";
+  String noToday = "No matches scheduled for today";
+  String noNow = "No matches currently being played";
 
 
   @override
   void initState() {
     super.initState();
-    getInPlay();
-    getUpcoming();
+    //getInPlay();
+    //getUpcoming();
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         showMatches = true;
@@ -190,7 +192,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
 
   @override
   Widget build(BuildContext context) {
-    //print(homeTeams);
     return Scaffold(
       backgroundColor: Colors.grey,
         appBar: AppBar(
@@ -316,8 +317,9 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
              ),
            );
           }
-        ),
+        ) 
       ),
       );
   }
 }
+
