@@ -215,7 +215,9 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
            return Card(
                child: Center(
                  child: ListTile(
-                   onTap: () {},
+                   onTap: () {
+                     Navigator.pushNamed(context, '/fixture');
+                   },
                    title: Center(
                        child:
                        showMatches ? Column(
