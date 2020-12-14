@@ -224,11 +224,15 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)
                                ),
                                Spacer(),
-                                   status[index] == 'in progress' ? Text(homeScores[index] + '-' + awayScores[index], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)) :
-                                   Text(' VS ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
+                                   status[index] == 'in progress' ?
+                                   Text(homeScores[index] + '-' + awayScores[index],
+                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)) :
+                                   Text(' VS ',
+                                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
                                    ),
                                Spacer(),
-                               Text(awayTeams[index], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)
+                               Text(awayTeams[index],
+                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)
                                ),
                              ],
                            ),
