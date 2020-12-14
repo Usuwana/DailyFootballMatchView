@@ -228,7 +228,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                    status[index] == 'in progress' ?
                                    Container(
                                      color: Colors.blue[600],
-                                     child: Text(/*homeScores[index]*/ testString + '-' + testString/*awayScores[index]*/,
+                                     child: Text(homeScores[index] + '-' + awayScores[index],
                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
                                    ) :
                                    Container(
@@ -238,7 +238,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                      ),
                                    ),
                                Spacer(),
-                               Text(testString/*awayTeams[index]*/,
+                               Text(awayTeams[index],
                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)
                                ),
                              ],
@@ -247,13 +247,13 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                            Row(
                              children: <Widget>[
                                status[index] == 'in progress' ?
-                               Text(/*times[index]*/testString,
+                               Text(times[index],
                                  style: TextStyle(fontSize: 10.0)) : Text(''),
                              ],
                            ),
                            Row(
                              children: <Widget>[
-                               Text('Status: ' + /*status[index]*/testString,
+                               Text('Status: ' + status[index],
                                style: TextStyle(color: Colors.red),
                                ),
                              ],
@@ -261,14 +261,14 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                            SizedBox(height: 10.0),
                            Row(
                              children: <Widget>[
-                               Text('Venue: ' + /*venueNames[index]*/,
+                               Text('Venue: ' + venueNames[index],
                                  style: TextStyle(color: Colors.blue),
                                ),
                              ],
                            ),
                            Row(
                              children: <Widget>[
-                               Text(/*leagueNames[index]*/testString,
+                               Text(leagueNames[index],
                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                                ),
                              ],
