@@ -56,8 +56,8 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
   @override
   void initState() {
     super.initState();
-    //getInPlay();
-    //getUpcoming();
+    getInPlay();
+    getUpcoming();
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         showMatches = true;
