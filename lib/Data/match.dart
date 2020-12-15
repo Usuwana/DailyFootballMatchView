@@ -48,7 +48,7 @@ class Match {
     int i = 0;
     int j = 0;
 
-    try {
+    if (response.statusCode == 200) {
       while (i < data.length) {
         while (j < matches.length) {
           homeTeam = data['data'][j]['homeName'];
@@ -88,9 +88,8 @@ class Match {
           i++;
         }
       }
-    } catch (e) {
-      print(e);
-      homeTeams.add("No matches currently in play");
+    } else {
+      throw new Exception("Could not get matches in play");
     }
     print(matches.length);
   }
@@ -107,8 +106,8 @@ class Match {
     int i = 0;
     int j = 0;
 
-    while (i < data.length) {
-      try {
+    if (response.statusCode == 200) {
+      while (i < data.length) {
         while (j < matches.length) {
           homeTeam = data['data'][j]['homeName'];
           awayTeam = data['data'][j]['awayName'];
@@ -146,10 +145,9 @@ class Match {
           j++;
           i++;
         }
-      } catch (e) {
-        print(e);
       }
+    } else {
+      throw new Exception("Could not get today's matches");
     }
-    print(matches.length);
   }
 }
