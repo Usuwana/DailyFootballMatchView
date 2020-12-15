@@ -158,5 +158,11 @@ class Match {
           "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
         });
     Map data = jsonDecode(response.body);
+    matches = data['data'];
+    int i = 0;
+    int j = 0;
+
+    if (response.statusCode == 200) {
+    } else {}
   }
 }
