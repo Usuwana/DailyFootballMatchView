@@ -274,6 +274,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                       : Shimmer.fromColors(
                            direction: ShimmerDirection.ltr,
                            period: Duration(seconds: 5),
+                           child: Expanded(
                              child: Column(
                                children: <Widget>[
                                  Row(
@@ -290,19 +291,21 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                      ),
                                      Column(
                                        children: <Widget>[
-                                         Container(height: 6.0, width: 300.0, color: Colors.black),
+                                         Container(height: 6.0, width: 100.0, color: Colors.black),
                                          Padding(padding: EdgeInsets.all(2.0)),
-                                         Container(height: 6.0, width: 300.0, color: Colors.black),
+                                         Container(height: 6.0, width: 100.0, color: Colors.black),
                                          Padding(padding: EdgeInsets.all(2.0)),
-                                         Container(height: 6.0, width: 300.0, color: Colors.black),
+                                         Container(height: 6.0, width: 100.0, color: Colors.black),
                                        ],
                                      ),
                                    ],
                                  )
                                ],
                              ),
+                           ),
                            baseColor: Colors.grey[600],
                            highlightColor: Colors.grey[100],
+                           //period: Duration(seconds: 5),
                          ),
 
                    ),
