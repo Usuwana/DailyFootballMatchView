@@ -161,6 +161,8 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
             leagueNames.add(leagueName);
             homeScores.add(homeScore.toString());
             awayScores.add(awayScore.toString());
+            print(homeTeam);
+            print(homeTeams.length);
           });
           j++;
           i++;
@@ -274,7 +276,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                       : Shimmer.fromColors(
                            direction: ShimmerDirection.ltr,
                            period: Duration(seconds: 5),
-                           child: Expanded(
                              child: Column(
                                children: <Widget>[
                                  Row(
@@ -302,7 +303,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                  )
                                ],
                              ),
-                           ),
                            baseColor: Colors.grey[600],
                            highlightColor: Colors.grey[100],
                            //period: Duration(seconds: 5),
