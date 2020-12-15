@@ -230,14 +230,20 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                                Spacer(),
                                    status[index] == 'in progress' ?
                                    Container(
-                                     color: Colors.blue[600],
-                                     child: Text(homeScores[index] + '-' + awayScores[index],
-                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
+                                     color: Colors.blue[900],
+                                     child: Padding(
+                                       padding: const EdgeInsets.all(8.0),
+                                       child: Text(homeScores[index] + '-' + awayScores[index],
+                                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)),
+                                     ),
                                    ) :
                                    Container(
                                      color: Colors.red[600],
-                                     child: Text(' VS ',
-                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
+                                     child: Padding(
+                                       padding: const EdgeInsets.all(8.0),
+                                       child: Text(' VS ',
+                                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0)
+                                       ),
                                      ),
                                    ),
                                Spacer(),
