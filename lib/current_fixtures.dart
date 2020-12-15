@@ -182,9 +182,9 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
   Widget build(BuildContext context) {
     //print(homeTeams);
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: Colors.deepPurple[900],
         appBar: AppBar(
-          backgroundColor: Colors.grey[800],
+          backgroundColor: Colors.indigo[900],
             title: Center(
               child: Text(
                   'Matches today',

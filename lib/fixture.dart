@@ -8,12 +8,15 @@ class Fixture extends StatefulWidget {
 class _FixtureState extends State<Fixture> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue[900],
-      child:
-        Container(
-          child: Row(),
+    return Scaffold(
+      backgroundColor: Colors.deepPurple[900],
+      appBar: AppBar(
+        backgroundColor: Colors.indigo[900],
+        shadowColor: Colors.black,
+        title: Center(
+            child: Text('Match stats')
         ),
+      ),
     );
   }
 }

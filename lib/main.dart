@@ -9,7 +9,7 @@ void main() {
     initialRoute: '/fixture',
     routes: {
      // '/': (context) => FirstScreen(),
-      '/current': (context) => CurrentFixtures(),
+     // '/current': (context) => CurrentFixtures(),
       '/fixture': (context) => Fixture(),
     },
   ));
