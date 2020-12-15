@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:football_app/current_fixtures.dart';
 
 class FirstScreen extends StatefulWidget {
   @override

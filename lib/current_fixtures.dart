@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:football_app/Data/matchDetails.dart';
-import 'Data/match.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CurrentFixtures extends StatefulWidget {
@@ -54,7 +51,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
     super.initState();
     getInPlay();
     getUpcoming();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         showMatches = true;
       });
@@ -180,7 +177,8 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
 
   @override
   Widget build(BuildContext context) {
-    //print(homeTeams);
+    print(homeTeams);
+    print(homeTeams.length);
     return Scaffold(
       backgroundColor: Colors.deepPurple[900],
         appBar: AppBar(
@@ -196,8 +194,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
             ),
           ),
 
-      body:
-      SafeArea(
+      body: SafeArea(
         child: RefreshIndicator(
           onRefresh: getInPlay,
           child: ListView.builder(
@@ -207,9 +204,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                elevation: 10.0,
                  child: Center(
                    child: ListTile(
-                     onTap: () {
-                       //Navigator.pushNamed(context, '/fixture');
-                     },
+                     onTap: () {},
                      title: Center(
                          child:
                          showMatches ? Column(
@@ -278,8 +273,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                          )
                       : Shimmer.fromColors(
                            direction: ShimmerDirection.ltr,
-                           //period: Duration(seconds: 5),
-
+                           period: Duration(seconds: 5),
                              child: Column(
                                children: <Widget>[
                                  Row(

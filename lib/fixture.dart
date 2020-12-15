@@ -17,6 +17,13 @@ class _FixtureState extends State<Fixture> {
             child: Text('Match stats')
         ),
       ),
+      body: Container(
+        child: Row(
+          children: <Widget>[
+
+          ],
+        ),
+      ),
     );
   }
 }

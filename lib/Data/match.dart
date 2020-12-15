@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:intl/intl.dart';
+
 
 class Match {
 
@@ -59,23 +59,4 @@ class Match {
     //print(matches.length);
   }
 
-  Future<List> getHome() async
-  {
-
-  }
-
-  Future<List> getAway() async
-  {
-
-  }
-
-  Future<List> getDate() async
-  {
-
-  }
-
-  Future<List> getMatchDay() async
-  {
-
-  }
 }
