@@ -6,7 +6,7 @@ import 'package:football_app/fixture.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: '/current',
+    initialRoute: '/fixture',
     routes: {
      // '/': (context) => FirstScreen(),
       '/current': (context) => CurrentFixtures(),

@@ -47,10 +47,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
   List<String> times = new List();
   bool showMatches = false;
   bool inPlay = false;
-  //int numOfMatches;
-  String testString = "Testing";
-  String noToday = "No matches scheduled for today";
-  String noNow = "No matches currently being played";
 
 
   @override
@@ -58,7 +54,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
     super.initState();
     getInPlay();
     getUpcoming();
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         showMatches = true;
       });
@@ -72,9 +68,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
         headers: {"x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"});
     Map data = jsonDecode(response.body);
     matches = data['data'];
-    //cur = matches.length;
-    DateTime now = new DateTime.now();
-    DateTime dateToday = new DateTime(now.year, now.month, now.day);
     int i=0;
     int j=0;
 
@@ -125,22 +118,16 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
       print(e);
       homeTeams.add("No matches currently in play");
     }
-    //numOfMatches = numOfMatches + matches.length;
+    print(matches.length);
   }
 
   Future<void> getUpcoming() async {
-    //make the request
-    /*Response response = await get(
-        'https://api.football-data.org/v2/competitions/PL/matches',
-        headers: {"X-Auth-Token": "bba664b8f36c4072b44f5c012671e2df"});*/
+   //make the request
     Response response = await get(
         'https://elenasport-io1.p.rapidapi.com/v2/upcoming',
         headers: {"x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"});
     Map data = jsonDecode(response.body);
     matches = data['data'];
-    //lat = matches.length;
-    DateTime now = new DateTime.now();
-    DateTime dateToday = new DateTime(now.year, now.month, now.day);
     int i=0;
     int j=0;
 
@@ -187,13 +174,15 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
       print(e);
     }
     }
+    print(matches.length);
   }
 
 
   @override
   Widget build(BuildContext context) {
+    //print(homeTeams);
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.blue[900],
         appBar: AppBar(
           backgroundColor: Colors.grey[800],
             title: Center(
@@ -219,7 +208,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                  child: Center(
                    child: ListTile(
                      onTap: () {
-                       Navigator.pushNamed(context, '/fixture');
+                       //Navigator.pushNamed(context, '/fixture');
                      },
                      title: Center(
                          child:
@@ -320,7 +309,6 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
                              ),
                            baseColor: Colors.grey[600],
                            highlightColor: Colors.grey[100],
-                           //period: Duration(seconds: 5),
                          ),
 
                    ),
@@ -329,7 +317,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
              );
             }
           ),
-        ) 
+        )
       ),
       );
   }

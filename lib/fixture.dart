@@ -9,6 +9,7 @@ class _FixtureState extends State<Fixture> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.blue[900],
       child:
         Container(
           child: Row(),
