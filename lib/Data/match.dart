@@ -1,62 +1,155 @@
-
 import 'package:http/http.dart';
 import 'dart:convert';
 
-
 class Match {
-
   int matchDay;
   bool sameDay;
   List<dynamic> matches;
-  //Map homeTeam;
   String homeTeam;
-  //Map awayTeam;
   String awayTeam;
   String date;
+  String matchStatus;
+  String venueName;
+  String leagueName;
+  int homeScore;
+  int home90;
+  int away90;
+  int homeET;
+  int awayET;
+  int homePEN;
+  int awayPEN;
+  int home1st;
+  int away1st;
+  int home2nd;
+  int away2nd;
+  int timeElapsed;
+  int awayScore;
+  List<String> homeTeams = new List();
+  List<String> awayTeams = new List();
+  List<int> matchdays = new List();
+  List<DateTime> dates;
+  List<String> status = new List();
+  List<String> venueNames = new List();
+  List<String> leagueNames = new List();
+  List<String> homeScores = new List();
+  List<String> awayScores = new List();
+  List<String> times = new List();
+  bool showMatches = false;
+  bool inPlay = false;
 
-
-  Future<void> getData() async {
+  Future<void> getInPlay() async {
     //make the request
-    Response response = await get(
-        'https://api.football-data.org/v2/competitions/PL/matches',
-        headers: {"X-Auth-Token": "bba664b8f36c4072b44f5c012671e2df"});
+    Response response =
+        await get('https://elenasport-io1.p.rapidapi.com/v2/inplay', headers: {
+      "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+    });
     Map data = jsonDecode(response.body);
-    matches = data['matches'];
-    DateTime now = new DateTime.now();
-    DateTime dateToday = new DateTime(now.year, now.month, now.day);
-    int i=0;
-    int j=0;
+    matches = data['data'];
+    int i = 0;
+    int j = 0;
 
-    while(i<data.length)
-    {
-      while(j<matches.length)
-      {
-        homeTeam = data['matches'][j]['homeTeam']['name'];
-        awayTeam = data['matches'][j]['awayTeam']['name'];
-        date = data['matches'][j]['utcDate'];
-        matchDay = data['matches'][j]['matchday'];
-        DateTime day = DateTime.parse(date);
-        day = new DateTime(day.year, day.month, day.day);
-        if(day.year == dateToday.year)
-        {
-          if(day.month == dateToday.month)
-          {
-            if(day.day == dateToday.day)
-            {
-              //setState(() {
-                //homeTeams.add(homeTeam);
-                //awayTeams.add(awayTeam);
-                //matchdays.add(matchDay);
-                //print(date);
-             // });
-            }
-          }
+    try {
+      while (i < data.length) {
+        while (j < matches.length) {
+          homeTeam = data['data'][j]['homeName'];
+          awayTeam = data['data'][j]['awayName'];
+          matchStatus = data['data'][j]['status'];
+          venueName = data['data'][j]['venueName'];
+          leagueName = data['data'][j]['leagueName'];
+          date = data['data'][j]['date'];
+          matchDay = data['data'][j]['round'];
+          home90 = data['data'][j]['team_home_90min_goals'];
+          away90 = data['data'][j]['team_away_90min_goals'];
+          homeET = data['data'][j]['team_home_ET_goals'];
+          awayET = data['data'][j]['team_away_ET_goals'];
+          homePEN = data['data'][j]['team_home_PEN_goals'];
+          awayPEN = data['data'][j]['team_away_PEN_goals'];
+          home1st = data['data'][j]['team_home_1stHalf_goals'];
+          away1st = data['data'][j]['team_away_1stHalf_goals'];
+          home2nd = data['data'][j]['team_home_2ndHalf_goals'];
+          away2nd = data['data'][j]['team_away_2ndHalf_goals'];
+          timeElapsed = data['data'][j]['elapsed'];
+          homeScore = homeET + home1st + home2nd;
+          awayScore = awayET + away1st + away2nd;
+          DateTime day = DateTime.parse(date);
+          day = new DateTime(day.year, day.month, day.day);
+
+          homeTeams.add(homeTeam);
+          awayTeams.add(awayTeam);
+          matchdays.add(matchDay);
+          status.add(matchStatus);
+          venueNames.add(venueName);
+          leagueNames.add(leagueName);
+          homeScores.add(homeScore.toString());
+          awayScores.add(awayScore.toString());
+          times.add(timeElapsed.toString());
+
+          j++;
+          i++;
         }
-        j++;
-        i++;
       }
+    } catch (e) {
+      print(e);
+      homeTeams.add("No matches currently in play");
     }
-    //print(matches.length);
+    print(matches.length);
   }
 
+  Future<void> getUpcoming() async {
+    //make the request
+    Response response = await get(
+        'https://elenasport-io1.p.rapidapi.com/v2/upcoming',
+        headers: {
+          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+        });
+    Map data = jsonDecode(response.body);
+    matches = data['data'];
+    int i = 0;
+    int j = 0;
+
+    while (i < data.length) {
+      try {
+        while (j < matches.length) {
+          homeTeam = data['data'][j]['homeName'];
+          awayTeam = data['data'][j]['awayName'];
+          matchStatus = data['data'][j]['status'];
+          venueName = data['data'][j]['venueName'];
+          leagueName = data['data'][j]['leagueName'];
+          date = data['data'][j]['date'];
+          matchDay = data['data'][j]['round'];
+          DateTime day = DateTime.parse(date);
+          home90 = data['data'][j]['team_home_90min_goals'];
+          away90 = data['data'][j]['team_away_90min_goals'];
+          homeET = data['data'][j]['team_home_ET_goals'];
+          awayET = data['data'][j]['team_away_ET_goals'];
+          homePEN = data['data'][j]['team_home_PEN_goals'];
+          awayPEN = data['data'][j]['team_away_PEN_goals'];
+          home1st = data['data'][j]['team_home_1stHalf_goals'];
+          away1st = data['data'][j]['team_away_1stHalf_goals'];
+          home2nd = data['data'][j]['team_home_2ndHalf_goals'];
+          away2nd = data['data'][j]['team_away_2ndHalf_goals'];
+          homeScore = homeET + homePEN + home1st + home2nd;
+          awayScore = awayET + awayPEN + away1st + away2nd;
+          day = new DateTime(day.year, day.month, day.day);
+
+          homeTeams.add(homeTeam);
+          awayTeams.add(awayTeam);
+          matchdays.add(matchDay);
+          status.add(matchStatus);
+          venueNames.add(venueName);
+          leagueNames.add(leagueName);
+          homeScores.add(homeScore.toString());
+          awayScores.add(awayScore.toString());
+          print(homeTeam);
+          print(homeTeams.length);
+
+          j++;
+          i++;
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+    print(matches.length);
+  }
 }
