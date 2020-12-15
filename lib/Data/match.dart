@@ -150,4 +150,13 @@ class Match {
       throw new Exception("Could not get today's matches");
     }
   }
+
+  Future<void> getLineUps() async {
+    Response response = await get(
+        "https://elenasport-io1.p.rapidapi.com/v2/fixtures/undefined/lineups",
+        headers: {
+          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+        });
+    Map data = jsonDecode(response.body);
+  }
 }
