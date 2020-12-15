@@ -213,6 +213,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
           itemCount: homeTeams.length,
           itemBuilder: (context, index) {
            return Card(
+             elevation: 10.0,
                child: Center(
                  child: ListTile(
                    onTap: () {
