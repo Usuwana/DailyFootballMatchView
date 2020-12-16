@@ -23,6 +23,9 @@ class _LiveFixturesState extends State<LiveFixtures> {
 
   @override
   Widget build(BuildContext context) {
+    match.getInPlay();
+    print(match.homeTeams);
+    print(match.homeTeams.length);
     return Scaffold(
       backgroundColor: Colors.deepPurple[900],
       appBar: AppBar(
