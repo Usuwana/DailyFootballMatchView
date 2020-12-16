@@ -30,7 +30,9 @@ class _FirstScreenState extends State<FirstScreen> {
       body: Center(
         child: RaisedButton(
           color: Colors.black,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/upcoming');
+          },
           child: Text(
             'Scheduled fixtures',
             style: TextStyle(color: Colors.white),
@@ -41,7 +43,9 @@ class _FirstScreenState extends State<FirstScreen> {
         //width: 100.0,
         child: FloatingActionButton(
           backgroundColor: Colors.black,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/live');
+          },
           child: Center(
               child: Text('live fixtures', style: TextStyle(fontSize: 12.0))),
         ),
