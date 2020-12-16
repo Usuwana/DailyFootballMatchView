@@ -19,14 +19,22 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple[900],
+      appBar: AppBar(
+          title: Text(
+        'Football Application',
+        style: TextStyle(color: Colors.white),
+      )),
+      body: RaisedButton(
+        color: Colors.black,
+        onPressed: () {},
+        child: Text('Show scheduled fixtures'),
+      ),
+      floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
-        body: Center(
-            child: RaisedButton(
-          onPressed: () async {
-            await Navigator.pushNamed(context, '/current');
-          },
-          child: Text('View Matches',
-              style: TextStyle(color: Colors.white, fontSize: 30)),
-        )));
+        onPressed: () {},
+        child: Text('Show live fixtures'),
+      ),
+    );
   }
 }
