@@ -40,7 +40,7 @@ class _CurrentFixturesState extends State<CurrentFixtures> {
       ),
       body: SafeArea(
           child: RefreshIndicator(
-        onRefresh: match.getInPlay,
+        onRefresh: match.getUpcoming,
         child: ListView.builder(
             itemCount: match.homeTeams.length,
             itemBuilder: (context, index) {
