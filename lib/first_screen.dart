@@ -13,7 +13,6 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   void initState() {
     super.initState();
-    //setupFixtures();
   }
 
   @override
@@ -21,6 +20,7 @@ class _FirstScreenState extends State<FirstScreen> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[900],
       appBar: AppBar(
+        backgroundColor: Colors.indigo[900],
           title: Center(
         child: Text(
           'Football Application',

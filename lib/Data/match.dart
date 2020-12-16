@@ -85,7 +85,6 @@ class Match {
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
           times.add(timeElapsed.toString());
-
           j++;
           i++;
         }
@@ -93,7 +92,6 @@ class Match {
     } else {
       throw new Exception("Could not get matches in play");
     }
-    //print(matches.length);
   }
 
   Future<void> getUpcoming() async {
@@ -142,8 +140,6 @@ class Match {
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
           fixtureIDs.add(fixtureID.toString());
-          //print(homeTeam);
-          //print(homeTeams.length);
 
           j++;
           i++;
