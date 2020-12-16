@@ -6,10 +6,10 @@ import 'package:football_app/first_screen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: '/',
+    initialRoute: '/current',
     routes: {
-      '/': (context) => FirstScreen(),
-      //'/current': (context) => CurrentFixtures(),
+      //'/': (context) => FirstScreen(),
+      '/current': (context) => CurrentFixtures(),
       //'/fixture': (context) => Fixture(),
     },
   ));

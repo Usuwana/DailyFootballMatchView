@@ -21,14 +21,21 @@ class _FirstScreenState extends State<FirstScreen> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[900],
       appBar: AppBar(
-          title: Text(
-        'Football Application',
-        style: TextStyle(color: Colors.white),
+          title: Center(
+        child: Text(
+          'Football Application',
+          style: TextStyle(color: Colors.white),
+        ),
       )),
-      body: RaisedButton(
-        color: Colors.black,
-        onPressed: () {},
-        child: Text('Show scheduled fixtures'),
+      body: Center(
+        child: RaisedButton(
+          color: Colors.black,
+          onPressed: () {},
+          child: Text(
+            'Show scheduled fixtures',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
