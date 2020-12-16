@@ -7,11 +7,9 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: '/current',
     routes: {
-     // '/': (context) => FirstScreen(),
+      // '/': (context) => FirstScreen(),
       '/current': (context) => CurrentFixtures(),
       '/fixture': (context) => Fixture(),
     },
   ));
 }
-
-

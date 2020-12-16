@@ -24,6 +24,7 @@ class Match {
   int away2nd;
   int timeElapsed;
   int awayScore;
+  int fixtureID;
   List<String> homeTeams = new List();
   List<String> awayTeams = new List();
   List<int> matchdays = new List();
@@ -34,6 +35,7 @@ class Match {
   List<String> homeScores = new List();
   List<String> awayScores = new List();
   List<String> times = new List();
+  List<String> fixtureIDs = new List();
   bool showMatches = false;
   bool inPlay = false;
 
@@ -153,7 +155,7 @@ class Match {
 
   Future<void> getLineUps() async {
     Response response = await get(
-        "https://elenasport-io1.p.rapidapi.com/v2/fixtures/undefined/lineups",
+        "https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fixtureID/lineups",
         headers: {
           "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
         });

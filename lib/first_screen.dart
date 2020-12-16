@@ -6,31 +6,27 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-
-  void setupFixtures()
-  {
+  void setupFixtures() {
     Navigator.pushNamed(context, '/current');
   }
 
   @override
-  void initState()  {
+  void initState() {
     super.initState();
     //setupFixtures();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: RaisedButton(
+        backgroundColor: Colors.black,
+        body: Center(
+            child: RaisedButton(
           onPressed: () async {
             await Navigator.pushNamed(context, '/current');
           },
           child: Text('View Matches',
-          style: TextStyle(color: Colors.white, fontSize: 30)),
-        )
-      )
-
-    );
+              style: TextStyle(color: Colors.white, fontSize: 30)),
+        )));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:football_app/Data/match.dart';
 
 class Fixture extends StatefulWidget {
   @override
@@ -13,15 +14,11 @@ class _FixtureState extends State<Fixture> {
       appBar: AppBar(
         backgroundColor: Colors.indigo[900],
         shadowColor: Colors.black,
-        title: Center(
-            child: Text('Match stats')
-        ),
+        title: Center(child: Text('Match stats')),
       ),
       body: Container(
         child: Row(
-          children: <Widget>[
-
-          ],
+          children: <Widget>[],
         ),
       ),
     );
