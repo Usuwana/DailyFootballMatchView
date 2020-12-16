@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:football_app/Data/match.dart';
 
-class CurrentFixtures extends StatefulWidget {
+class TodayFixtures extends StatefulWidget {
   @override
-  _CurrentFixturesState createState() => _CurrentFixturesState();
+  _TodayFixturesState createState() => _TodayFixturesState();
 }
 
-class _CurrentFixturesState extends State<CurrentFixtures> {
+class _TodayFixturesState extends State<TodayFixtures> {
   Match match = new Match();
 
   @override
   void initState() {
     super.initState();
-    match.getInPlay();
+    //match.getInPlay();
+    match.getUpcoming();
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         match.showMatches = true;

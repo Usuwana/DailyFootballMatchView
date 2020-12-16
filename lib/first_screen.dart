@@ -32,15 +32,19 @@ class _FirstScreenState extends State<FirstScreen> {
           color: Colors.black,
           onPressed: () {},
           child: Text(
-            'Show scheduled fixtures',
+            'Scheduled fixtures',
             style: TextStyle(color: Colors.white),
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        onPressed: () {},
-        child: Text('Show live fixtures'),
+      floatingActionButton: Container(
+        //width: 100.0,
+        child: FloatingActionButton(
+          backgroundColor: Colors.black,
+          onPressed: () {},
+          child: Center(
+              child: Text('live fixtures', style: TextStyle(fontSize: 12.0))),
+        ),
       ),
     );
   }
