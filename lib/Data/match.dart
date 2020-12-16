@@ -141,6 +141,7 @@ class Match {
           leagueNames.add(leagueName);
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
+          fixtureIDs.add(fixtureID.toString());
           print(homeTeam);
           print(homeTeams.length);
 
