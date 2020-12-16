@@ -45,10 +45,62 @@ class _TodayFixturesState extends State<TodayFixtures> {
         ),
       ),
       body: SafeArea(
-          child: RefreshIndicator(
+          child: match.showMatches == false
+      ? ListView.builder(
+          itemCount: 18,
+          itemBuilder: (context, index) {
+            return Shimmer.fromColors(
+              direction: ShimmerDirection.ltr,
+              period: Duration(seconds: 1),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(padding: EdgeInsets.all(15.0)),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                  height: 6.0,
+                                  width: 200.0,
+                                  color: Colors.black),
+                            ),
+                            Padding(padding: EdgeInsets.all(2.0)),
+                            Container(
+                                height: 6.0,
+                                width: 300.0,
+                                color: Colors.black),
+                            Padding(padding: EdgeInsets.all(2.0)),
+                            Container(
+                                height: 6.0,
+                                width: 350.0,
+                                color: Colors.black),
+                            Padding(padding: EdgeInsets.all(2.0)),
+                            Container(
+                                height: 6.0,
+                                width: 350.0,
+                                color: Colors.black),
+                            Padding(padding: EdgeInsets.all(5.0)),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              baseColor: Colors.grey[600],
+              highlightColor: Colors.grey[100],
+            );
+          })
+
+          : RefreshIndicator(
         onRefresh: match.getUpcoming,
-        child: /*homeTeams.length > 0
-            ?*/ ListView.builder(
+        child: match.homeTeams.length > 0
+            ? ListView.builder(
           physics: AlwaysScrollableScrollPhysics(),
                 itemCount: match.homeTeams.length,
                 itemBuilder: (context, index) {
@@ -69,21 +121,7 @@ class _TodayFixturesState extends State<TodayFixtures> {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.0)),
                                 Spacer(),
-                                match.status[index] == 'in progress'
-                                    ? Container(
-                                        color: Colors.blue[900],
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                              match.homeScores[index] +
-                                                  '-' +
-                                                  match.awayScores[index],
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 25.0)),
-                                        ),
-                                      )
-                                    : Container(
+                                Container(
                                         color: Colors.red[600],
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -101,14 +139,6 @@ class _TodayFixturesState extends State<TodayFixtures> {
                               ],
                             ),
                             SizedBox(height: 10.0),
-                            Row(
-                              children: <Widget>[
-                                match.status[index] == 'in progress'
-                                    ? Text(match.times[index],
-                                        style: TextStyle(fontSize: 10.0))
-                                    : Text(''),
-                              ],
-                            ),
                             Row(
                               children: <Widget>[
                                 Text(
@@ -142,12 +172,12 @@ class _TodayFixturesState extends State<TodayFixtures> {
                     ),
                   );
                 })
-            /*: Center(
+            : Center(
                 child: Container(
                     color: Colors.white,
                     child: Text("No scheduled matches today",
                         style: TextStyle(fontSize: 30.0))),
-              ),*/
+              ),
       )),
     );
   }
