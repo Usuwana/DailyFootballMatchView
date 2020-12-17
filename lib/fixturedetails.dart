@@ -14,12 +14,8 @@ class _FixtureDetailsState extends State<FixtureDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[900],
-        title: Text(
-            'Match Details',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 30.0)
-        ),
+        title: Text('Match Details',
+            style: TextStyle(color: Colors.white, fontSize: 30.0)),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -33,31 +29,42 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                   child: Row(
                     children: <Widget>[
                       Padding(padding: const EdgeInsets.all(12.0)),
-                      Text('hometeam', style: TextStyle(fontSize: 15.0),),
+                      Text(
+                        'hometeam',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
                       Padding(padding: const EdgeInsets.all(18.0)),
                       Container(
-                        color: Colors.indigo[900],
+                          color: Colors.indigo[900],
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Score', style: TextStyle(fontSize: 30.0, color: Colors.white),),
+                            child: Text(
+                              'Score',
+                              style: TextStyle(
+                                  fontSize: 30.0, color: Colors.white),
+                            ),
                           )),
                       Padding(padding: const EdgeInsets.all(18.0)),
-                      Text('awayteam', style: TextStyle(fontSize: 15.0),),
+                      Text(
+                        'awayteam',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
                     ],
                   ),
                 ),
                 Padding(padding: const EdgeInsets.all(8.0)),
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal:10.0),
-                  child:Container(
-                    height:1.0,
-                    width:430.0,
-                    color:Colors.black,),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Container(
+                    height: 1.0,
+                    width: 430.0,
+                    color: Colors.black,
+                  ),
                 ),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                      Text('Time'),
+                    Text('Time'),
                   ],
                 ),
                 Padding(
@@ -71,35 +78,69 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                   ),
                 ),
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal:10.0),
-                  child:Container(
-                    height:1.0,
-                    width:430.0,
-                    color:Colors.black,),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Container(
+                    height: 1.0,
+                    width: 430.0,
+                    color: Colors.black,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Line-Ups', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,),),
+                    Text(
+                      'Line-Ups',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
                 Padding(
-                  padding:EdgeInsets.symmetric(horizontal:10.0),
-                  child:Container(
-                    height:1.0,
-                    width:100.0,
-                    color:Colors.black,),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Container(
+                    height: 1.0,
+                    width: 100.0,
+                    color: Colors.black,
+                  ),
                 ),
-                Container(
-                  color: Colors.grey[350],
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                      itemCount: 11,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text('PlayerT1'),
-                        );
-                      })
+                Row(
+                  children: <Widget>[
+                    Text('HomeTeam',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Padding(padding: EdgeInsets.symmetric(horizontal: 70.0)),
+                    Text('AwayTeam',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Container(
+                          color: Colors.grey[350],
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: 11,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('PlayerT1'),
+                                );
+                              })),
+                    ),
+                    Flexible(
+                      child: Container(
+                          color: Colors.grey[350],
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: 11,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('PlayerT2'),
+                                );
+                              })),
+                    ),
+                  ],
                 ),
               ],
             ),

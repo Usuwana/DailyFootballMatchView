@@ -7,6 +7,8 @@ class Match {
   List<dynamic> matches;
   String homeTeam;
   String awayTeam;
+  int homeTeamID;
+  int awayTeamID;
   String date;
   String matchStatus;
   String venueName;
@@ -27,6 +29,8 @@ class Match {
   int fixtureID;
   List<String> homeTeams = new List();
   List<String> awayTeams = new List();
+  List<String> homeTeamIDs = new List();
+  List<String> awayTeamIDs = new List();
   List<int> matchdays = new List();
   List<DateTime> dates;
   List<String> status = new List();
@@ -55,6 +59,8 @@ class Match {
         while (j < matches.length) {
           homeTeam = data['data'][j]['homeName'];
           awayTeam = data['data'][j]['awayName'];
+          homeTeamID = data['data'][j]['idHome'];
+          awayTeamID = data['data'][j]['idAway'];
           matchStatus = data['data'][j]['status'];
           venueName = data['data'][j]['venueName'];
           leagueName = data['data'][j]['leagueName'];
@@ -84,7 +90,10 @@ class Match {
           leagueNames.add(leagueName);
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
+          fixtureIDs.add(fixtureID.toString());
           times.add(timeElapsed.toString());
+          homeTeamIDs.add(homeTeamID.toString());
+          awayTeamIDs.add(awayTeamID.toString());
           print(times);
           j++;
           i++;
@@ -128,6 +137,7 @@ class Match {
           away1st = data['data'][j]['team_away_1stHalf_goals'];
           home2nd = data['data'][j]['team_home_2ndHalf_goals'];
           away2nd = data['data'][j]['team_away_2ndHalf_goals'];
+          fixtureID = data['data'][j]['id'];
           homeScore = homeET + homePEN + home1st + home2nd;
           awayScore = awayET + awayPEN + away1st + away2nd;
           day = new DateTime(day.year, day.month, day.day);
@@ -152,17 +162,37 @@ class Match {
   }
 
   Future<void> getLineUps() async {
-    Response response = await get(
-        "https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fixtureID/lineups",
-        headers: {
-          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
-        });
-    Map data = jsonDecode(response.body);
-    matches = data['data'];
-    int i = 0;
-    int j = 0;
+    int index = 0;
+    int id = 0;
 
-    if (response.statusCode == 200) {
-    } else {}
+    while (index < fixtureIDs.length) {
+      id = int.parse(fixtureIDs[index]);
+      Response response = await get(
+          "https://elenasport-io1.p.rapidapi.com/v2/fixtures/$id/lineups",
+          headers: {
+            "x-rapidapi-key":
+                "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+          });
+      Map data = jsonDecode(response.body);
+      matches = data['data'];
+      index++;
+      int i = 0;
+      int j = 0;
+
+      if (response.statusCode == 200) {
+        while (i < data.length) {
+          while (j < matches.length) {
+            if (matches[j]['idFixture'] == fixtureIDs[j]) {
+              if (matches[j]['idTeam'] == homeTeamIDs[i]) {
+              } else if (matches[j]['idTeam'] == awayTeamIDs[i]) {}
+            }
+            i++;
+            j++;
+          }
+        }
+      } else {
+        throw new Exception('Line-up not available');
+      }
+    }
   }
 }
