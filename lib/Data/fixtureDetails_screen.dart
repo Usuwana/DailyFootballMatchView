@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:football_app/fixturedetails.dart';
 
-class LiveFixturesScreen extends StatefulWidget {
+class FixtureDetailsScreen extends StatefulWidget {
   @override
-  _LiveFixturesScreenState createState() => _LiveFixturesScreenState();
+  _FixtureDetailsScreenState createState() => _FixtureDetailsScreenState();
 }
 
-class _LiveFixturesScreenState extends State<LiveFixturesScreen> {
+class _FixtureDetailsScreenState extends State<FixtureDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ,
+      child: FixtureDetails(),
     );
   }
 }
