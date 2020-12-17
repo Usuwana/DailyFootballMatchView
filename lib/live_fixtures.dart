@@ -23,7 +23,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
 
   @override
   Widget build(BuildContext context) {
-    match.getInPlay();
+    //match.getInPlay();
     print(match.homeTeams);
     print(match.homeTeams.length);
     return Scaffold(
@@ -43,57 +43,74 @@ class _LiveFixturesState extends State<LiveFixtures> {
       body: SafeArea(
           child: match.showMatches == false
               ? ListView.builder(
-            itemCount: 18,
-            itemBuilder: (context, index) {
-              return Shimmer.fromColors(
-                direction: ShimmerDirection.ltr,
-                period: Duration(seconds: 1),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(15.0)),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Column(
+                  itemCount: 18,
+                  itemBuilder: (context, index) {
+                    return Shimmer.fromColors(
+                      direction: ShimmerDirection.ltr,
+                      period: Duration(seconds: 1),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              Padding(padding: EdgeInsets.all(15.0)),
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Container(
-                                    height: 6.0,
-                                    width: 200.0,
-                                    color: Colors.black),
+                                child: Column(
+                                  children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Container(
+                                          height: 6.0,
+                                          width: 200.0,
+                                          color: Colors.black),
+                                    ),
+                                    Padding(padding: EdgeInsets.all(2.0)),
+                                    Container(
+                                        height: 6.0,
+                                        width: 300.0,
+                                        color: Colors.black),
+                                    Padding(padding: EdgeInsets.all(2.0)),
+                                    Container(
+                                        height: 6.0,
+                                        width: 350.0,
+                                        color: Colors.black),
+                                    Padding(padding: EdgeInsets.all(2.0)),
+                                    Container(
+                                        height: 6.0,
+                                        width: 350.0,
+                                        color: Colors.black),
+                                    Padding(padding: EdgeInsets.all(5.0)),
+                                  ],
+                                ),
                               ),
-                              Padding(padding: EdgeInsets.all(2.0)),
-                              Container(
-                                  height: 6.0,
-                                  width: 300.0,
-                                  color: Colors.black),
-                              Padding(padding: EdgeInsets.all(2.0)),
-                              Container(
-                                  height: 6.0,
-                                  width: 350.0,
-                                  color: Colors.black),
-                              Padding(padding: EdgeInsets.all(2.0)),
-                              Container(
-                                  height: 6.0,
-                                  width: 350.0,
-                                  color: Colors.black),
-                              Padding(padding: EdgeInsets.all(5.0)),
                             ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                baseColor: Colors.grey[600],
-                highlightColor: Colors.grey[100],
-              );
-            })
+                          )
+                        ],
+                      ),
+                      baseColor: Colors.grey[600],
+                      highlightColor: Colors.grey[100],
+                    );
+                  })
               : RefreshIndicator(
-                  onRefresh: match.getUpcoming,
+                  //This needs fixing, It refreshes the data but does not refresh the display on screen
+                  onRefresh: () async {
+                    //match.getInPlay();
+                    setState(() {
+                      match.homeTeams.clear();
+                      match.awayTeams.clear();
+                      match.matchdays.clear();
+                      match.status.clear();
+                      match.venueNames.clear();
+                      match.leagueNames.clear();
+                      match.homeScores.clear();
+                      match.awayScores.clear();
+                      match.times.clear();
+                      //match.getInPlay();
+                      initState();
+                      build(context);
+                    });
+                  },
                   child: match.homeTeams.length > 0
                       ? ListView.builder(
                           itemCount: match.homeTeams.length,
@@ -114,24 +131,20 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                                   fontSize: 15.0)),
                                           Spacer(),
                                           Container(
-                                                  color: Colors.blue[900],
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                        match.homeScores[
-                                                                index] +
-                                                            '-' +
-                                                            match.awayScores[
-                                                                index],
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 25.0)),
-                                                  ),
-                                                ),
-
+                                            color: Colors.blue[900],
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  match.homeScores[index] +
+                                                      '-' +
+                                                      match.awayScores[index],
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 25.0)),
+                                            ),
+                                          ),
                                           Spacer(),
                                           Text(match.awayTeams[index],
                                               style: TextStyle(
@@ -143,8 +156,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                       Row(
                                         children: <Widget>[
                                           Text(match.times[index],
-                                                  style:
-                                                      TextStyle(fontSize: 10.0)),
+                                              style: TextStyle(fontSize: 10.0)),
                                         ],
                                       ),
                                       Row(

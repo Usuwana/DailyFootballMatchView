@@ -85,6 +85,7 @@ class Match {
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
           times.add(timeElapsed.toString());
+          print(times);
           j++;
           i++;
         }
