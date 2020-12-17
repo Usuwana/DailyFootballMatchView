@@ -13,6 +13,8 @@ class Match {
   String matchStatus;
   String venueName;
   String leagueName;
+  String starterHome;
+  String starterAway;
   int homeScore;
   int home90;
   int away90;
@@ -40,6 +42,8 @@ class Match {
   List<String> awayScores = new List();
   List<String> times = new List();
   List<String> fixtureIDs = new List();
+  List<String> homeLineup = new List();
+  List<String> awayLineup = new List();
   bool showMatches = false;
   bool inPlay = false;
 
@@ -164,6 +168,8 @@ class Match {
   Future<void> getLineUps() async {
     int index = 0;
     int id = 0;
+    int i = 0;
+    int j = 0;
 
     while (index < fixtureIDs.length) {
       id = int.parse(fixtureIDs[index]);
@@ -176,15 +182,18 @@ class Match {
       Map data = jsonDecode(response.body);
       matches = data['data'];
       index++;
-      int i = 0;
-      int j = 0;
 
       if (response.statusCode == 200) {
         while (i < data.length) {
           while (j < matches.length) {
             if (matches[j]['idFixture'] == fixtureIDs[j]) {
               if (matches[j]['idTeam'] == homeTeamIDs[i]) {
-              } else if (matches[j]['idTeam'] == awayTeamIDs[i]) {}
+                starterHome = data['data'][j]['playerName'];
+                homeLineup.add(starterHome);
+              } else if (matches[j]['idTeam'] == awayTeamIDs[i]) {
+                starterAway = data['data'][j]['playerName'];
+                awayLineup.add(starterAway);
+              }
             }
             i++;
             j++;
