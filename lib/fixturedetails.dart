@@ -9,6 +9,19 @@ class FixtureDetails extends StatefulWidget {
 
 class _FixtureDetailsState extends State<FixtureDetails> {
   Match match = new Match();
+
+  @override
+  void initState() {
+    match.getInPlay();
+    match.getLineUps();
+    super.initState();
+    Future.delayed(const Duration(seconds: 10), () {
+      setState(() {
+        match.showMatches = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
