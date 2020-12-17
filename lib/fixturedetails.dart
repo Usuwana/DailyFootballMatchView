@@ -137,7 +137,7 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                               itemCount: 11,
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text('PlayerT1'),
+                                  title: Text(match.homeLineup[index]),
                                 );
                               })),
                     ),
@@ -149,7 +149,7 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                               itemCount: 11,
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text('PlayerT2'),
+                                  title: Text(match.awayLineup[index]),
                                 );
                               })),
                     ),
