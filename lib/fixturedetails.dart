@@ -43,7 +43,7 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                     children: <Widget>[
                       Padding(padding: const EdgeInsets.all(12.0)),
                       Text(
-                        'hometeam',
+                        match.stHome,
                         style: TextStyle(fontSize: 15.0),
                       ),
                       Padding(padding: const EdgeInsets.all(18.0)),
@@ -59,7 +59,7 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                           )),
                       Padding(padding: const EdgeInsets.all(18.0)),
                       Text(
-                        'awayteam',
+                        match.stAway,
                         style: TextStyle(fontSize: 15.0),
                       ),
                     ],
@@ -120,10 +120,10 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                 ),
                 Row(
                   children: <Widget>[
-                    Text('HomeTeam',
+                    Text(match.stHome,
                         style: TextStyle(fontWeight: FontWeight.bold)),
                     Padding(padding: EdgeInsets.symmetric(horizontal: 70.0)),
-                    Text('AwayTeam',
+                    Text(match.stAway,
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),

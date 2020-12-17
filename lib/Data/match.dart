@@ -15,6 +15,10 @@ class Match {
   String leagueName;
   String starterHome;
   String starterAway;
+  String stHome;
+  String stAway;
+  String scoreH;
+  String scoreA;
   int homeScore;
   int home90;
   int away90;
@@ -190,9 +194,13 @@ class Match {
               if (matches[j]['idTeam'] == homeTeamIDs[i]) {
                 starterHome = data['data'][j]['playerName'];
                 homeLineup.add(starterHome);
+                stHome = matches[j]['homeName'];
+                //scoreH = homeScores[j];
               } else if (matches[j]['idTeam'] == awayTeamIDs[i]) {
                 starterAway = data['data'][j]['playerName'];
                 awayLineup.add(starterAway);
+                stAway = matches[j]['awayName'];
+                //scoreA = awayScores[j];
               }
             }
             i++;
