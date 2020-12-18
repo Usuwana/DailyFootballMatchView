@@ -99,7 +99,6 @@ class _LiveFixturesState extends State<LiveFixtures> {
                     setState(() {
                       match.homeTeams.clear();
                       match.awayTeams.clear();
-                      match.matchdays.clear();
                       match.status.clear();
                       match.venueNames.clear();
                       match.leagueNames.clear();

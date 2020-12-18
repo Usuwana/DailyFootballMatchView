@@ -2,10 +2,9 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class Match {
-  int matchDay;
   bool sameDay;
   List<dynamic> matches;
-  List<dynamic> matchL;
+  List<dynamic> matchesl;
   String homeTeam;
   String awayTeam;
   int homeTeamID;
@@ -18,8 +17,8 @@ class Match {
   String starterAway;
   String stHome;
   String stAway;
-  String scoreH;
-  String scoreA;
+  int scoreH;
+  int scoreA;
   String country;
   int homeScore;
   int home90;
@@ -40,7 +39,6 @@ class Match {
   List<String> awayTeams = new List();
   List<String> homeTeamIDs = new List();
   List<String> awayTeamIDs = new List();
-  List<int> matchdays = new List();
   List<DateTime> dates;
   List<String> status = new List();
   List<String> venueNames = new List();
@@ -51,6 +49,8 @@ class Match {
   List<String> fixtureIDs = new List();
   List<String> homeLineup = new List();
   List<String> awayLineup = new List();
+  Map<dynamic, List<String>> lineHome = new Map();
+  Map<dynamic, List<String>> lineAway = new Map();
   bool showMatches = false;
   bool inPlay = false;
 
@@ -77,7 +77,6 @@ class Match {
           leagueName = data['data'][j]['leagueName'];
           country = data['data'][j]['countryName'];
           date = data['data'][j]['date'];
-          matchDay = data['data'][j]['round'];
           home90 = data['data'][j]['team_home_90min_goals'];
           away90 = data['data'][j]['team_away_90min_goals'];
           homeET = data['data'][j]['team_home_ET_goals'];
@@ -98,7 +97,6 @@ class Match {
           homeTeams.add(homeTeam);
           countries.add(country);
           awayTeams.add(awayTeam);
-          matchdays.add(matchDay);
           status.add(matchStatus);
           venueNames.add(venueName);
           leagueNames.add(leagueName);
@@ -111,6 +109,38 @@ class Match {
           print(times);
           j++;
           i++;
+
+          Response responsel = await get(
+              'https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fixtureID/lineups',
+              headers: {
+                "x-rapidapi-key":
+                    "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+              });
+          Map datal = jsonDecode(response.body);
+          matchesl = datal['data'];
+          int k = 0;
+
+          if (responsel.statusCode == 200) {
+            while (k < matchesl.length) {
+              if (fixtureID == matchesl[k]['idFixture']) {
+                if (homeTeamID == matches[k]['idTeam']) {
+                  stHome = matches[k]['teamName'];
+                  scoreH = homeScore;
+                  homeLineup.add(matchesl[k]['playerName']);
+                  //lineHome.putIfAbsent(fixtureID, () => homeLineup);
+                } else if (awayTeamID == matches[k]['idTeam']) {
+                  stAway = matches[k]['teamName'];
+                  scoreA = awayScore;
+                  awayLineup.add(matchesl[k]['playerName']);
+                }
+                lineHome.putIfAbsent(fixtureID, () => homeLineup);
+                lineAway.putIfAbsent(fixtureID, () => awayLineup);
+              }
+              k++;
+            }
+          } else {
+            throw new Exception("Could not get lineups");
+          }
         }
       }
     } else {
@@ -140,7 +170,6 @@ class Match {
           leagueName = data['data'][j]['leagueName'];
           country = data['data'][j]['countryName'];
           date = data['data'][j]['date'];
-          matchDay = data['data'][j]['round'];
           DateTime day = DateTime.parse(date);
           home90 = data['data'][j]['team_home_90min_goals'];
           away90 = data['data'][j]['team_away_90min_goals'];
@@ -160,7 +189,6 @@ class Match {
           homeTeams.add(homeTeam);
           countries.add(country);
           awayTeams.add(awayTeam);
-          matchdays.add(matchDay);
           status.add(matchStatus);
           venueNames.add(venueName);
           leagueNames.add(leagueName);
@@ -176,4 +204,6 @@ class Match {
       throw new Exception("Could not get today's matches");
     }
   }
+
+  Future<void> getLineUps() async {}
 }
