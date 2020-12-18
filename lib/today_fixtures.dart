@@ -23,7 +23,7 @@ class _TodayFixturesState extends State<TodayFixtures> {
 
   @override
   Widget build(BuildContext context) {
-    match.getUpcoming();
+    //match.getUpcoming();
     print(match.homeTeams);
     print(match.homeTeams.length);
     return Scaffold(
