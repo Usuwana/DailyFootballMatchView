@@ -180,7 +180,20 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                       Row(
                                         children: <Widget>[
                                           Text(
-                                            match.leagueNames[index],
+                                            'Competition' +
+                                                match.leagueNames[index],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.0),
+                                      Row(
+                                        children: <Widget>[
+                                          Text(
+                                            'Country: ' +
+                                                match.countries[index],
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:football_app/Data/match.dart';
+import 'package:football_app/live_fixtures.dart';
+import 'package:football_app/fixturedetails.dart';
 
 class FixtureDetails extends StatefulWidget {
   @override
@@ -9,11 +11,11 @@ class FixtureDetails extends StatefulWidget {
 
 class _FixtureDetailsState extends State<FixtureDetails> {
   Match match = new Match();
+  //LiveFixtures match = new LiveFixtures();
 
   @override
   void initState() {
     match.getInPlay();
-    match.getLineUps();
     super.initState();
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {

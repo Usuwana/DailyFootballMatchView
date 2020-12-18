@@ -5,6 +5,7 @@ class Match {
   int matchDay;
   bool sameDay;
   List<dynamic> matches;
+  List<dynamic> matchL;
   String homeTeam;
   String awayTeam;
   int homeTeamID;
@@ -19,6 +20,7 @@ class Match {
   String stAway;
   String scoreH;
   String scoreA;
+  String country;
   int homeScore;
   int home90;
   int away90;
@@ -33,6 +35,7 @@ class Match {
   int timeElapsed;
   int awayScore;
   int fixtureID;
+  List<String> countries = new List();
   List<String> homeTeams = new List();
   List<String> awayTeams = new List();
   List<String> homeTeamIDs = new List();
@@ -72,6 +75,7 @@ class Match {
           matchStatus = data['data'][j]['status'];
           venueName = data['data'][j]['venueName'];
           leagueName = data['data'][j]['leagueName'];
+          country = data['data'][j]['countryName'];
           date = data['data'][j]['date'];
           matchDay = data['data'][j]['round'];
           home90 = data['data'][j]['team_home_90min_goals'];
@@ -85,12 +89,14 @@ class Match {
           home2nd = data['data'][j]['team_home_2ndHalf_goals'];
           away2nd = data['data'][j]['team_away_2ndHalf_goals'];
           timeElapsed = data['data'][j]['elapsed'];
+          fixtureID = data['data'][j]['id'];
           homeScore = homeET + home1st + home2nd;
           awayScore = awayET + away1st + away2nd;
           DateTime day = DateTime.parse(date);
           day = new DateTime(day.year, day.month, day.day);
 
           homeTeams.add(homeTeam);
+          countries.add(country);
           awayTeams.add(awayTeam);
           matchdays.add(matchDay);
           status.add(matchStatus);
@@ -132,6 +138,7 @@ class Match {
           matchStatus = data['data'][j]['status'];
           venueName = data['data'][j]['venueName'];
           leagueName = data['data'][j]['leagueName'];
+          country = data['data'][j]['countryName'];
           date = data['data'][j]['date'];
           matchDay = data['data'][j]['round'];
           DateTime day = DateTime.parse(date);
@@ -151,6 +158,7 @@ class Match {
           day = new DateTime(day.year, day.month, day.day);
 
           homeTeams.add(homeTeam);
+          countries.add(country);
           awayTeams.add(awayTeam);
           matchdays.add(matchDay);
           status.add(matchStatus);
@@ -159,57 +167,13 @@ class Match {
           homeScores.add(homeScore.toString());
           awayScores.add(awayScore.toString());
           fixtureIDs.add(fixtureID.toString());
-
+          print(venueNames);
           j++;
           i++;
         }
       }
     } else {
       throw new Exception("Could not get today's matches");
-    }
-  }
-
-  Future<void> getLineUps() async {
-    int index = 0;
-    int id = 0;
-    int i = 0;
-    int j = 0;
-
-    while (index < fixtureIDs.length) {
-      id = int.parse(fixtureIDs[index]);
-      Response response = await get(
-          "https://elenasport-io1.p.rapidapi.com/v2/fixtures/$id/lineups",
-          headers: {
-            "x-rapidapi-key":
-                "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
-          });
-      Map data = jsonDecode(response.body);
-      matches = data['data'];
-      index++;
-
-      if (response.statusCode == 200) {
-        while (i < data.length) {
-          while (j < matches.length) {
-            if (matches[j]['idFixture'] == fixtureIDs[j]) {
-              if (matches[j]['idTeam'] == homeTeamIDs[i]) {
-                starterHome = data['data'][j]['playerName'];
-                homeLineup.add(starterHome);
-                stHome = matches[j]['homeName'];
-                //scoreH = homeScores[j];
-              } else if (matches[j]['idTeam'] == awayTeamIDs[i]) {
-                starterAway = data['data'][j]['playerName'];
-                awayLineup.add(starterAway);
-                stAway = matches[j]['awayName'];
-                //scoreA = awayScores[j];
-              }
-            }
-            i++;
-            j++;
-          }
-        }
-      } else {
-        throw new Exception('Line-up not available');
-      }
     }
   }
 }

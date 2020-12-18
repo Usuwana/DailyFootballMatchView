@@ -148,16 +148,20 @@ class _TodayFixturesState extends State<TodayFixtures> {
                                       Row(
                                         children: <Widget>[
                                           Text(
-                                            'Venue: ' + match.venueNames[index],
-                                            style:
-                                                TextStyle(color: Colors.blue),
+                                            'Competition: ' +
+                                                match.leagueNames[index],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0),
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
                                           Text(
-                                            match.leagueNames[index],
+                                            'Country: ' +
+                                                match.countries[index],
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0),
