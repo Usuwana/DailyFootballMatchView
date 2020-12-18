@@ -109,37 +109,6 @@ class Match {
           print(times);
           j++;
           i++;
-
-          Response responsel = await get(
-              'https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fixtureID/lineups',
-              headers: {
-                "x-rapidapi-key":
-                    "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
-              });
-          Map datal = jsonDecode(response.body);
-          matchesl = datal['data'];
-          int k = 0;
-
-          if (responsel.statusCode == 200) {
-            while (k < matchesl.length) {
-              if (fixtureID == matchesl[k]['idFixture']) {
-                if (homeTeamID == matches[k]['idTeam']) {
-                  stHome = matches[k]['teamName'];
-                  scoreH = homeScore;
-                  homeLineup.add(matchesl[k]['playerName']);
-                } else if (awayTeamID == matches[k]['idTeam']) {
-                  stAway = matches[k]['teamName'];
-                  scoreA = awayScore;
-                  awayLineup.add(matchesl[k]['playerName']);
-                }
-                lineHome.putIfAbsent(fixtureID, () => homeLineup);
-                lineAway.putIfAbsent(fixtureID, () => awayLineup);
-              }
-              k++;
-            }
-          } else {
-            throw new Exception("Could not get lineups");
-          }
         }
       }
     } else {
@@ -204,5 +173,40 @@ class Match {
     }
   }
 
-  Future<void> getLineUps() async {}
+  Future<void> getLineUps(dynamic fID, dynamic homeID, dynamic awayID,
+      dynamic hScore, dynamic aScore) async {
+    Response responsel = await get(
+        'https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fID/lineups',
+        headers: {
+          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
+        });
+    Map datal = jsonDecode(responsel.body);
+    matchesl = datal['data'];
+    int k = 0;
+
+    if (responsel.statusCode == 200) {
+      while (k < matchesl.length) {
+        if (fID == matchesl[k]['idFixture']) {
+          if (homeID == matches[k]['idTeam']) {
+            stHome = matches[k]['teamName'];
+            scoreH = hScore;
+            homeLineup.add(matchesl[k]['playerName']);
+            print(homeLineup);
+          } else if (awayID == matches[k]['idTeam']) {
+            stAway = matches[k]['teamName'];
+            scoreA = aScore;
+            awayLineup.add(matchesl[k]['playerName']);
+            print(awayLineup);
+          }
+          //lineHome.putIfAbsent(fID, () => homeLineup);
+          //lineAway.putIfAbsent(fID, () => awayLineup);
+          //print(homeLineup);
+          //print(awayLineup);
+        }
+        k++;
+      }
+    } else {
+      throw new Exception("Could not get lineups");
+    }
+  }
 }

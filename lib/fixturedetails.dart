@@ -54,7 +54,9 @@ class _FixtureDetailsState extends State<FixtureDetails> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Score',
+                              match.scoreH.toString() +
+                                  '-' +
+                                  match.scoreA.toString(),
                               style: TextStyle(
                                   fontSize: 30.0, color: Colors.white),
                             ),

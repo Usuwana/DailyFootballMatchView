@@ -119,7 +119,15 @@ class _LiveFixturesState extends State<LiveFixtures> {
                               elevation: 10.0,
                               child: Center(
                                 child: ListTile(
-                                  onTap: () {},
+                                  onTap: () {
+                                    match.getLineUps(
+                                        match.fixtureIDs[index],
+                                        match.homeTeamIDs[index],
+                                        match.awayTeamIDs[index],
+                                        match.homeScores[index],
+                                        match.awayScores[index]);
+                                    Navigator.pushNamed(context, '/details');
+                                  },
                                   title: Center(
                                       child: Column(
                                     children: [
