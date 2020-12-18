@@ -106,8 +106,9 @@ class _LiveFixturesState extends State<LiveFixtures> {
                       match.awayScores.clear();
                       match.times.clear();
                       //match.getInPlay();
-                      initState();
-                      build(context);
+                      //initState();
+                      //build(context);
+                      Navigator.pushReplacementNamed(context, '/live');
                     });
                   },
                   child: match.homeTeams.length > 0

@@ -127,7 +127,6 @@ class Match {
                   stHome = matches[k]['teamName'];
                   scoreH = homeScore;
                   homeLineup.add(matchesl[k]['playerName']);
-                  //lineHome.putIfAbsent(fixtureID, () => homeLineup);
                 } else if (awayTeamID == matches[k]['idTeam']) {
                   stAway = matches[k]['teamName'];
                   scoreA = awayScore;
