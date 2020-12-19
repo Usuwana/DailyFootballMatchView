@@ -120,13 +120,13 @@ class _LiveFixturesState extends State<LiveFixtures> {
                               child: Center(
                                 child: ListTile(
                                   onTap: () {
-                                    match.getLineUps(
+                                    /*match.getLineUps(
                                         match.fixtureIDs[index],
                                         match.homeTeamIDs[index],
                                         match.awayTeamIDs[index],
                                         match.homeScores[index],
-                                        match.awayScores[index]);
-                                    Navigator.pushNamed(context, '/details');
+                                        match.awayScores[index]);*/
+                                    //Navigator.pushNamed(context, '/details');
                                   },
                                   title: Center(
                                       child: Column(
