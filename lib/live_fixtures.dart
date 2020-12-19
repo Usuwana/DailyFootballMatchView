@@ -162,6 +162,8 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                       ),
                                       SizedBox(height: 10.0),
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: <Widget>[
                                           Text(match.times[index],
                                               style: TextStyle(fontSize: 10.0)),
@@ -188,7 +190,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                       Row(
                                         children: <Widget>[
                                           Text(
-                                            'Competition' +
+                                            'Competition: ' +
                                                 match.leagueNames[index],
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
