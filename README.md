@@ -4,6 +4,22 @@
 
 App makes use of https://rapidapi.com/mararrdeveloper/api/ElenaSport.io api
 
+This application is meant to show the scheduled fixtrures for the next 24 hour period in various football leagues found at the ElenaSport API. It also displays live fixtures and their current scorelines.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 A new Flutter application.
 
