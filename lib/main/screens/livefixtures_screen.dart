@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:football_app/live_fixtures.dart';
+import 'file:///C:/Users/tatem/Documents/FlutterStuff/My_apps/football_app/lib/main/widgets/live_fixtures.dart';
 
 class LiveFixturesScreen extends StatefulWidget {
   @override

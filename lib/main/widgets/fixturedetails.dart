@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:football_app/Data/match.dart';
-import 'package:football_app/live_fixtures.dart';
-import 'package:football_app/fixturedetails.dart';
+import 'file:///C:/Users/tatem/Documents/FlutterStuff/My_apps/football_app/lib/main/widgets/live_fixtures.dart';
+import 'file:///C:/Users/tatem/Documents/FlutterStuff/My_apps/football_app/lib/main/widgets/fixturedetails.dart';
 
 class FixtureDetails extends StatefulWidget {
   @override
