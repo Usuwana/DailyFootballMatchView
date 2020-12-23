@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/tatem/Documents/FlutterStuff/My_apps/football_app/lib/main/widgets/fixturedetails.dart';
+import 'package:football_app/main/widgets/fixturedetails.dart';
 
 class FixtureDetailsScreen extends StatefulWidget {
   @override
