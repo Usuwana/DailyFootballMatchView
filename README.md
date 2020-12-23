@@ -1,6 +1,5 @@
 # football_app
 
-******STILL UNDER CONSTRUCTION*****
 
 App makes use of https://rapidapi.com/mararrdeveloper/api/ElenaSport.io api
 
