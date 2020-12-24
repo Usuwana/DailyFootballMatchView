@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:football_app/main/utils/imports.dart';
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -20,13 +20,13 @@ class _FirstScreenState extends State<FirstScreen> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[900],
       appBar: AppBar(
-        backgroundColor: Colors.indigo[900],
+          backgroundColor: Colors.indigo[900],
           title: Center(
-        child: Text(
-          'Football Application',
-          style: TextStyle(color: Colors.white),
-        ),
-      )),
+            child: Text(
+              'Football Application',
+              style: TextStyle(color: Colors.white),
+            ),
+          )),
       body: Center(
         child: RaisedButton(
           color: Colors.black,

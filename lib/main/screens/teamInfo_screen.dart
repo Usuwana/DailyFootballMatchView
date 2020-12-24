@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:football_app/main/widgets/teamInfo.dart';
+import 'package:football_app/main/utils/imports.dart';
 
 class TeamInfoScreen extends StatefulWidget {
   @override

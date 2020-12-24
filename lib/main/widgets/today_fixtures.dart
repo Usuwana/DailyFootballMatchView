@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:football_app/Data/match.dart';
+import 'package:football_app/main/utils/imports.dart';
 
 class TodayFixtures extends StatefulWidget {
   @override

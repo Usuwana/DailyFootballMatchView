@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:football_app/main/widgets/today_fixtures.dart';
-import 'package:football_app/main/screens/first_screen.dart';
-import 'package:football_app/main/screens/fixtureDetails_screen.dart';
-import 'package:football_app/main/screens/livefixtures_screen.dart';
+import 'package:football_app/main/utils/imports.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,7 +6,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => FirstScreen(),
-      '/upcoming': (context) => TodayFixtures(),
+      '/upcoming': (context) => TodayFixturesScreen(),
       '/live': (context) => LiveFixturesScreen(),
       '/details': (context) => FixtureDetailsScreen(),
     },
