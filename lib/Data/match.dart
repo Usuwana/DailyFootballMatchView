@@ -201,11 +201,11 @@ class Match {
               awayLineup.add(matchesl[k]['playerName']);
               print(awayLineup);
             }
-            k++;
-            l++;
           } else {
             throw new Exception("Could not get lineups");
           }
+          k++;
+          l++;
         }
       }
     }
