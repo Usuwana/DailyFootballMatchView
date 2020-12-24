@@ -2,6 +2,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class Match {
+  static int num;
   bool sameDay;
   List<dynamic> matches;
   List<dynamic> matchesl;
@@ -198,10 +199,6 @@ class Match {
             awayLineup.add(matchesl[k]['playerName']);
             print(awayLineup);
           }
-          //lineHome.putIfAbsent(fID, () => homeLineup);
-          //lineAway.putIfAbsent(fID, () => awayLineup);
-          //print(homeLineup);
-          //print(awayLineup);
         }
         k++;
       }

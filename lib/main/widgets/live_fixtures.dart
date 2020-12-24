@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:football_app/main/screens/livefixtures_screen.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:football_app/Data/match.dart';
+import 'package:football_app/main/widgets/fixturedetails.dart';
 
 class LiveFixtures extends StatefulWidget {
   @override
@@ -126,6 +128,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                         match.awayTeamIDs[index],
                                         match.homeScores[index],
                                         match.awayScores[index]);*/
+                                    Match.num = index;
                                     //Navigator.pushNamed(context, '/details');
                                   },
                                   title: Center(
@@ -171,43 +174,56 @@ class _LiveFixturesState extends State<LiveFixtures> {
                                       ),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Status: ' + match.status[index],
-                                            style: TextStyle(color: Colors.red),
-                                          ),
+                                          match.status[index] != null
+                                              ? Text(
+                                                  'Status: ' +
+                                                      match.status[index],
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                )
+                                              : Text('Status unknown'),
                                         ],
                                       ),
                                       SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Venue: ' + match.venueNames[index],
-                                            style:
-                                                TextStyle(color: Colors.blue),
-                                          ),
+                                          match.venueNames[index] != null
+                                              ? Text(
+                                                  'Venue: ' +
+                                                      match.venueNames[index],
+                                                  style: TextStyle(
+                                                      color: Colors.blue),
+                                                )
+                                              : Text('Venue unknown'),
                                         ],
                                       ),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Competition: ' +
-                                                match.leagueNames[index],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
+                                          match.leagueNames[index] != null
+                                              ? Text(
+                                                  'Competition: ' +
+                                                      match.leagueNames[index],
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20.0),
+                                                )
+                                              : Text('Competition unknown'),
                                         ],
                                       ),
                                       SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Country: ' +
-                                                match.countries[index],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
+                                          match.countries[index] != null
+                                              ? Text(
+                                                  'Country: ' +
+                                                      match.countries[index],
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20.0),
+                                                )
+                                              : Text('Country unknown'),
                                         ],
                                       ),
                                     ],

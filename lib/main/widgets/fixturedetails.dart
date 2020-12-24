@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:football_app/Data/match.dart';
+import 'package:football_app/main/widgets/live_fixtures.dart';
 
 class FixtureDetails extends StatefulWidget {
   @override
@@ -9,7 +10,6 @@ class FixtureDetails extends StatefulWidget {
 
 class _FixtureDetailsState extends State<FixtureDetails> {
   Match match = new Match();
-  //LiveFixtures match = new LiveFixtures();
 
   @override
   void initState() {
@@ -24,6 +24,12 @@ class _FixtureDetailsState extends State<FixtureDetails> {
 
   @override
   Widget build(BuildContext context) {
+    match.getLineUps(
+        match.fixtureIDs[Match.num],
+        match.homeTeamIDs[Match.num],
+        match.awayTeamIDs[Match.num],
+        match.homeScores[Match.num],
+        match.awayScores[Match.num]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[900],

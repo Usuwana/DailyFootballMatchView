@@ -138,34 +138,56 @@ class _TodayFixturesState extends State<TodayFixtures> {
                                       SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Status: ' + match.status[index],
-                                            style: TextStyle(color: Colors.red),
-                                          ),
+                                          match.status[index] != null
+                                              ? Text(
+                                                  'Status: ' +
+                                                      match.status[index],
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                )
+                                              : Text('Status unknown'),
                                         ],
                                       ),
                                       SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Competition: ' +
-                                                match.leagueNames[index],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
+                                          match.venueNames[index] != null
+                                              ? Text(
+                                                  'Venue: ' +
+                                                      match.venueNames[index],
+                                                  style: TextStyle(
+                                                      color: Colors.blue),
+                                                )
+                                              : Text('Venue unknown'),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          match.leagueNames[index] != null
+                                              ? Text(
+                                                  'Competition: ' +
+                                                      match.leagueNames[index],
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20.0),
+                                                )
+                                              : Text('Competition unknown'),
                                         ],
                                       ),
                                       SizedBox(height: 10.0),
                                       Row(
                                         children: <Widget>[
-                                          Text(
-                                            'Country: ' +
-                                                match.countries[index],
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
+                                          match.countries[index] != null
+                                              ? Text(
+                                                  'Country: ' +
+                                                      match.countries[index],
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20.0),
+                                                )
+                                              : Text('Country unknown'),
                                         ],
                                       ),
                                     ],
