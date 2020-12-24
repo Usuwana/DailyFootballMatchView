@@ -14,6 +14,13 @@ class _FixtureDetailsState extends State<FixtureDetails> {
   @override
   void initState() {
     match.getInPlay();
+    match.getLineUps(
+        match.fixtureIDs[Match.num],
+        match.homeTeamIDs[Match.num],
+        match.awayTeamIDs[Match.num],
+        match.homeScores[Match.num],
+        match.awayScores[Match.num]);
+    print('Yes! ' + match.fixtureIDs[Match.num]);
     super.initState();
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {
@@ -24,12 +31,6 @@ class _FixtureDetailsState extends State<FixtureDetails> {
 
   @override
   Widget build(BuildContext context) {
-    match.getLineUps(
-        match.fixtureIDs[Match.num],
-        match.homeTeamIDs[Match.num],
-        match.awayTeamIDs[Match.num],
-        match.homeScores[Match.num],
-        match.awayScores[Match.num]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[900],

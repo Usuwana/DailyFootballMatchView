@@ -184,26 +184,30 @@ class Match {
     Map datal = jsonDecode(responsel.body);
     matchesl = datal['data'];
     int k = 0;
+    int l = 0;
 
     if (responsel.statusCode == 200) {
-      while (k < matchesl.length) {
-        if (fID == matchesl[k]['idFixture']) {
-          if (homeID == matches[k]['idTeam']) {
-            stHome = matches[k]['teamName'];
-            scoreH = hScore;
-            homeLineup.add(matchesl[k]['playerName']);
-            print(homeLineup);
-          } else if (awayID == matches[k]['idTeam']) {
-            stAway = matches[k]['teamName'];
-            scoreA = aScore;
-            awayLineup.add(matchesl[k]['playerName']);
-            print(awayLineup);
+      while (l < datal.length) {
+        while (k < matchesl.length) {
+          if (fID == matchesl[k]['idFixture']) {
+            if (homeID == matches[k]['idTeam']) {
+              stHome = matches[k]['teamName'];
+              scoreH = hScore;
+              homeLineup.add(matchesl[k]['playerName']);
+              print(homeLineup);
+            } else if (awayID == matches[k]['idTeam']) {
+              stAway = matches[k]['teamName'];
+              scoreA = aScore;
+              awayLineup.add(matchesl[k]['playerName']);
+              print(awayLineup);
+            }
+            k++;
+            l++;
+          } else {
+            throw new Exception("Could not get lineups");
           }
         }
-        k++;
       }
-    } else {
-      throw new Exception("Could not get lineups");
     }
   }
 
