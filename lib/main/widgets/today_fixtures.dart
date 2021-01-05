@@ -91,7 +91,9 @@ class _TodayFixturesState extends State<TodayFixtures> {
                     );
                   })
               : RefreshIndicator(
-                  onRefresh: match.getUpcoming,
+                  onRefresh: () async {
+                    (context as Element).reassemble();
+                  },
                   child: match.homeTeams.length > 0
                       ? ListView.builder(
                           //physics: AlwaysScrollableScrollPhysics(),

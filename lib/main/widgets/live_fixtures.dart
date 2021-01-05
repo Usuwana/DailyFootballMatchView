@@ -92,7 +92,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
                   })
               : RefreshIndicator(
                   //This needs fixing, It refreshes the data but does not refresh the display on screen
-                  onRefresh: () async {
+                  /*onRefresh: () async {
                     //match.getInPlay();
                     setState(() {
                       match.homeTeams.clear();
@@ -108,7 +108,10 @@ class _LiveFixturesState extends State<LiveFixtures> {
                       //build(context);
                       Navigator.pushReplacementNamed(context, '/live');
                     });
-                  },
+                  },*/
+            onRefresh: () async {
+              (context as Element).reassemble();
+            },
                   child: match.homeTeams.length > 0
                       ? ListView.builder(
                           itemCount: match.homeTeams.length,
