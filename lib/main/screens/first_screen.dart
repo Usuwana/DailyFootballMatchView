@@ -52,7 +52,7 @@ class _FirstScreenState extends State<FirstScreen> {
               SizedBox(
                 height: 10,
               ),
-              Center(
+              /*Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: ListTile(
@@ -66,7 +66,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
             ],
           ),
         ),
