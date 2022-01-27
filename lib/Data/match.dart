@@ -117,7 +117,7 @@ class Match {
     }
   }
 
-  Future<void> getUpcoming() async {
+  Future<dynamic> getUpcoming() async {
     //make the request
     Response response = await get(
         'https://elenasport-io1.p.rapidapi.com/v2/upcoming',
@@ -172,6 +172,7 @@ class Match {
     } else {
       throw new Exception("Could not get today's matches");
     }
+    return matches;
   }
 
   Future<void> getLineUps(dynamic fID, dynamic homeID, dynamic awayID,
