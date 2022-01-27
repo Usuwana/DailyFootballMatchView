@@ -8,7 +8,6 @@ void main() {
       '/': (context) => FirstScreen(),
       '/upcoming': (context) => TodayFixturesScreen(),
       '/live': (context) => LiveFixturesScreen(),
-      '/details': (context) => FixtureDetailsScreen(),
     },
   ));
 }

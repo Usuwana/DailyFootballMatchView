@@ -5,6 +5,7 @@ class Match {
   static int num;
   bool sameDay;
   List<dynamic> matches;
+  List<dynamic> matchesUpcoming;
   List<dynamic> matchesl;
   String homeTeam;
   String awayTeam;
@@ -55,7 +56,7 @@ class Match {
   bool showMatches = false;
   bool inPlay = false;
 
-  Future<void> getInPlay() async {
+  Future<dynamic> getInPlay() async {
     //make the request
     Response response =
         await get('https://elenasport-io1.p.rapidapi.com/v2/inplay', headers: {
@@ -115,6 +116,7 @@ class Match {
     } else {
       throw new Exception("Could not get matches in play");
     }
+    return matches;
   }
 
   Future<dynamic> getUpcoming() async {
@@ -125,13 +127,13 @@ class Match {
           "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
         });
     Map data = jsonDecode(response.body);
-    matches = data['data'];
+    matchesUpcoming = data['data'];
     int i = 0;
     int j = 0;
 
     if (response.statusCode == 200) {
       while (i < data.length) {
-        while (j < matches.length) {
+        while (j < matchesUpcoming.length) {
           homeTeam = data['data'][j]['homeName'];
           awayTeam = data['data'][j]['awayName'];
           matchStatus = data['data'][j]['status'];
@@ -172,51 +174,6 @@ class Match {
     } else {
       throw new Exception("Could not get today's matches");
     }
-    return matches;
-  }
-
-  Future<void> getLineUps(dynamic fID, dynamic homeID, dynamic awayID,
-      dynamic hScore, dynamic aScore) async {
-    Response responsel = await get(
-        'https://elenasport-io1.p.rapidapi.com/v2/fixtures/$fID/lineups',
-        headers: {
-          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
-        });
-    Map datal = jsonDecode(responsel.body);
-    matchesl = datal['data'];
-    int k = 0;
-    int l = 0;
-
-    if (responsel.statusCode == 200) {
-      while (l < datal.length) {
-        while (k < matchesl.length) {
-          if (fID == matchesl[k]['idFixture']) {
-            if (homeID == matches[k]['idTeam']) {
-              stHome = matches[k]['teamName'];
-              scoreH = hScore;
-              homeLineup.add(matchesl[k]['playerName']);
-              print(homeLineup);
-            } else if (awayID == matches[k]['idTeam']) {
-              stAway = matches[k]['teamName'];
-              scoreA = aScore;
-              awayLineup.add(matchesl[k]['playerName']);
-              print(awayLineup);
-            }
-            k++;
-            l++;
-          } else {
-            throw new Exception("Could not get lineups");
-          }
-        }
-      }
-    }
-  }
-
-  Future<void> getTeamData() async {
-    Response response = await get(
-        'https://elenasport-io1.p.rapidapi.com/v2/teams/undefined',
-        headers: {
-          "x-rapidapi-key": "c4785495fdmshece188a6182be5ap1dabf2jsn53061cf2749f"
-        });
+    return matchesUpcoming;
   }
 }
