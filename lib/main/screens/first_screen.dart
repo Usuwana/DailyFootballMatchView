@@ -27,27 +27,48 @@ class _FirstScreenState extends State<FirstScreen> {
               style: TextStyle(color: Colors.white),
             ),
           )),
-      body: Center(
-        child: RaisedButton(
-          color: Colors.black,
-          onPressed: () {
-            Navigator.pushNamed(context, '/upcoming');
-          },
-          child: Text(
-            'Scheduled fixtures',
-            style: TextStyle(color: Colors.white),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 250.0),
+        child: Center(
+          child: Column(
+            children: [
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: ListTile(
+                    tileColor: Colors.black,
+                    onTap: () {
+                      Navigator.pushNamed(context, '/upcoming');
+                    },
+                    title: Center(
+                      child: Text(
+                        'Scheduled fixtures',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: ListTile(
+                    tileColor: Colors.black,
+                    onTap: () {
+                      Navigator.pushNamed(context, '/live');
+                    },
+                    title: Center(
+                      child: Text('Live Fixtures',
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-      floatingActionButton: Container(
-        //width: 100.0,
-        child: FloatingActionButton(
-          backgroundColor: Colors.black,
-          onPressed: () {
-            Navigator.pushNamed(context, '/live');
-          },
-          child: Center(
-              child: Text('live fixtures', style: TextStyle(fontSize: 12.0))),
         ),
       ),
     );
