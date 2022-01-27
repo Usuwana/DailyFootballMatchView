@@ -53,8 +53,6 @@ class Match {
   List<String> awayLineup = new List();
   Map<dynamic, List<String>> lineHome = new Map();
   Map<dynamic, List<String>> lineAway = new Map();
-  bool showMatches = false;
-  bool inPlay = false;
 
   Future<dynamic> getInPlay() async {
     //make the request

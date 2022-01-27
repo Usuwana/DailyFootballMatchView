@@ -12,11 +12,6 @@ class _TodayFixturesState extends State<TodayFixtures> {
   void initState() {
     //match.getUpcoming();
     super.initState();
-    Future.delayed(const Duration(seconds: 10), () {
-      setState(() {
-        match.showMatches = true;
-      });
-    });
   }
 
   @override

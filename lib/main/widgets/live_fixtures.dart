@@ -12,11 +12,6 @@ class _LiveFixturesState extends State<LiveFixtures> {
   void initState() {
     //match.getInPlay();
     super.initState();
-    Future.delayed(const Duration(seconds: 10), () {
-      setState(() {
-        match.showMatches = true;
-      });
-    });
   }
 
   @override
@@ -30,7 +25,7 @@ class _LiveFixturesState extends State<LiveFixtures> {
         backgroundColor: Colors.indigo[900],
         title: Center(
           child: Text(
-            'Matches today',
+            'Current matches',
             style: TextStyle(
               color: Colors.white,
               fontSize: 30.0,
